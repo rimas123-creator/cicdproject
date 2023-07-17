@@ -15,7 +15,12 @@ pipeline {
 					sh 'mvn snyk:test -fn'
 				}
 			}
-    }		
+    }
+    stage('Building Docker Image'){
+	     steps{
+			sh 'docker build -f "Dockerfile.dso" -t dso:latest .'
+	     }
+    }
   }
 }
 
